@@ -14,3 +14,4 @@ Some code thrown together to demonstrate Jetpack Compose concepts.  Fun times.
   * Scaffold
   * Lazy lists (Rows and Columns)
   * Flows
+  * Layout recompositon
