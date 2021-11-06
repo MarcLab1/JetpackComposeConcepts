@@ -13,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.jetpackcomposeconcepts.components.Recomposition
 
 @Composable
 fun NavigationStart() {
@@ -44,6 +45,9 @@ fun NavigationStart() {
         }
         composable(route = "flows") {
             MyFlows()
+        }
+        composable(route = "recomposition") {
+            Recomposition()
         }
     }
 }
@@ -81,6 +85,9 @@ fun NavigationFirstScreen(navController: NavController) {
         }
         Button(onClick = { navController.navigate("flows") }) {
             Text("Flows")
+        }
+        Button(onClick = { navController.navigate("recomposition") }) {
+            Text("Recomposition")
         }
     }
 }

@@ -9,10 +9,17 @@ import kotlinx.coroutines.flow.flow
 class MyViewModel : ViewModel() {
 
     var students : MutableLiveData<ArrayList<Student>>
+    lateinit var num1 : MutableLiveData<Int>
+    lateinit var num2 : MutableLiveData<Int>
+    lateinit var clicked : MutableLiveData<Boolean>
+
     init
     {
         students = MutableLiveData()
         students.value = StudentRepo().students
+        num1 = MutableLiveData(1)
+        num2 = MutableLiveData(1)
+        clicked = MutableLiveData(false)
     }
 
     val flowTimer : Flow<String> = flow {
