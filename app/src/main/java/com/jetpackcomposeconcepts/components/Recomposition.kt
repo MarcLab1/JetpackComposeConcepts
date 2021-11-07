@@ -19,7 +19,6 @@ lateinit var viewModel: MyViewModel
 fun Recomposition() {
 
     viewModel = MyViewModel()
-
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -35,33 +34,39 @@ fun Recomposition() {
 @Composable
 fun MyButton1() {
 
-    Row(
-        modifier = Modifier.background(Color.White).fillMaxWidth()
-    ) {
-        var clicked by remember { mutableStateOf(viewModel.clicked.value!!) }
-        if (clicked) {
-            first()
-            second()
-            third()
-        }
+    var clicked by remember { mutableStateOf(viewModel.clicked.value!!) }
+    if (clicked) {
+        first()
+        second()
+        third()
+    }
 
-        Button(onClick = {
+    Button(
+        onClick = {
             clicked = !clicked
             viewModel.num1.value = viewModel.num1.value!! + 1
-        })
-        {
-            Text(clicked.toString())
-        }
-    }
-    Row( modifier = Modifier.background(Color.White).fillMaxWidth())
+        },
+        modifier = Modifier
+            .background(Color.White)
+            .fillMaxWidth()
+    )
     {
-        Text(viewModel.num1.value.toString())
+        Text(clicked.toString())
     }
+
+    Text(
+        viewModel.num1.value.toString(),
+        modifier = Modifier
+            .background(Color.White)
+            .fillMaxWidth()
+    )
 }
 
 @Composable
 fun MyText1() {
-    Row(modifier = Modifier.background(Color.LightGray).fillMaxWidth()) {
+    Row(modifier = Modifier
+        .background(Color.LightGray)
+        .fillMaxWidth()) {
         var num1 = viewModel.num1.value!!
         Text(num1.toString())
     }
@@ -71,32 +76,35 @@ fun MyText1() {
 @Composable
 fun MyText2() {
 
-    Row(modifier = Modifier.background(Color.White).fillMaxWidth()) {
-        var time = System.currentTimeMillis()
-        Text(time.toString())
-    }
+    var time = System.currentTimeMillis()
+    Text(time.toString(), modifier = Modifier
+        .background(Color.White)
+        .fillMaxWidth())
 }
 
 
 @Composable
 fun MyTimer() {
-    Row(modifier = Modifier.background(Color.LightGray).fillMaxWidth()) {
-        var time: Long by remember {
-            mutableStateOf(0)
-        }
-        object : CountDownTimer(100, 100) {
-            override fun onTick(millis: Long) {
-                time++
-            }
 
-            override fun onFinish() {
-            }
-        }.start()
-        Column() {
-            Text(text = time.toString())
-            var time = System.currentTimeMillis().toString()
-            Text(time)
+    var time: Long by remember {
+        mutableStateOf(0)
+    }
+    object : CountDownTimer(100, 100) {
+        override fun onTick(millis: Long) {
+            time++
         }
+
+        override fun onFinish() {
+        }
+    }.start()
+    Column() {
+        Text(text = time.toString(), modifier = Modifier
+            .background(Color.LightGray)
+            .fillMaxWidth())
+        var time = System.currentTimeMillis().toString()
+        Text(time, modifier = Modifier
+            .background(Color.White)
+            .fillMaxWidth())
     }
 }
 
