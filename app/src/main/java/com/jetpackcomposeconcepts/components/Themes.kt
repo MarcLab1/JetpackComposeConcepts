@@ -13,9 +13,11 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun Themes() {
+
     var myDarkTheme by remember {
         mutableStateOf(false)
     }
+
     var str = "Hello World!"
     MyComposeNativeTheme(darkTheme = myDarkTheme) {
         Surface() {

@@ -1,5 +1,6 @@
 package com.jetpackcomposeconcepts
 
+import android.widget.Spinner
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -16,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jetpackcomposeconcepts.components.MyButtonsAndRecomposition
 import com.jetpackcomposeconcepts.components.Recomposition
+import com.jetpackcomposeconcepts.components.Spinner
 
 @Composable
 fun NavigationStart() {
@@ -53,6 +55,9 @@ fun NavigationStart() {
         }
         composable(route = "mybuttonsandrecomposition") {
             MyButtonsAndRecomposition()
+        }
+        composable(route = "spinner") {
+            Spinner()
         }
     }
 }
@@ -96,6 +101,9 @@ fun NavigationFirstScreen(navController: NavController) {
         }
         Button(onClick = { navController.navigate("mybuttonsandrecomposition") }) {
             Text("Buttons & Recomposition")
+        }
+        Button(onClick = { navController.navigate("spinner") }) {
+            Text("Spinner")
         }
     }
 }

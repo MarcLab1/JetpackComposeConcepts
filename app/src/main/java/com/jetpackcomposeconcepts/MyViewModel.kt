@@ -12,6 +12,7 @@ class MyViewModel : ViewModel() {
     lateinit var num1 : MutableLiveData<Int>
     lateinit var num2 : MutableLiveData<Int>
     lateinit var clicked : MutableLiveData<Boolean>
+    lateinit var myDarkTheme: MutableLiveData<Boolean>
 
     init
     {
@@ -20,6 +21,7 @@ class MyViewModel : ViewModel() {
         num1 = MutableLiveData(1)
         num2 = MutableLiveData(1)
         clicked = MutableLiveData(false)
+        myDarkTheme = MutableLiveData(false)
     }
 
     val flowTimer : Flow<String> = flow {
