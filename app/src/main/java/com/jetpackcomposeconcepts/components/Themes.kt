@@ -18,6 +18,7 @@ fun Themes() {
         mutableStateOf(false)
     }
 
+
     var str = "Hello World!"
     MyComposeNativeTheme(darkTheme = myDarkTheme) {
         Surface() {
@@ -34,12 +35,15 @@ fun Themes() {
                         when (myDarkTheme) {
                             true -> {
                                 myDarkTheme = false
+                                //viewModel.myDarkTheme.value = false
                             }
                             false -> {
                                 myDarkTheme = true
+                                //viewModel.myDarkTheme.value = true
                             }
                             else -> {
                                 myDarkTheme = true
+                                //viewModel.myDarkTheme.value = true
                             }
                         }
                     }
