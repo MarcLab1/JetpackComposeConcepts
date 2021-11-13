@@ -67,6 +67,9 @@ fun NavigationStart() {
             composable(route = "state2") {
                 State2()
             }
+            composable(route = "mitch1") {
+                Mitch1()
+            }
         }
 
     }
@@ -121,6 +124,7 @@ class MyButtons {
         MyButton(route = "spinner", text = "Spinner"),
         MyButton(route = "state1", text = "State & ViewModel 1"),
         MyButton(route = "state2", text = "State & ViewModel 2"),
+        MyButton(route = "mitch1", text = "Mitch All Together?"),
     )
 }
 

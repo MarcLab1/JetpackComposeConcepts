@@ -13,21 +13,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            MyComposeNativeTheme() {
-
-                Surface() {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxHeight()
-                            .fillMaxWidth()
-                    )
-                    {
-                        NavigationStart()
-                    }
+            Surface() {
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .fillMaxWidth()
+                )
+                {
+                    NavigationStart()
                 }
             }
         }
     }
-
 }
 
