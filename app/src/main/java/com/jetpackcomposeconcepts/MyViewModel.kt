@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -18,6 +19,8 @@ class MyViewModel : ViewModel() {
     var showToast : MutableState<Boolean>
     var mutableStateVar : MutableState<String>
     lateinit var mutableLiveData : MutableLiveData<String>
+    lateinit var items : MutableLiveData<List<Item>>
+    lateinit var string : MutableLiveData<String>
 
     init
     {
@@ -30,6 +33,11 @@ class MyViewModel : ViewModel() {
         showToast = mutableStateOf(false)
         mutableStateVar = mutableStateOf("original")
         mutableLiveData = MutableLiveData("original")
+
+        var repo = ItemRepo()
+        items = MutableLiveData(repo.items)
+
+        string = MutableLiveData("")
     }
 
     val flowTimer : Flow<String> = flow {
