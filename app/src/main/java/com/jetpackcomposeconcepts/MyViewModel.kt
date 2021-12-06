@@ -21,6 +21,7 @@ class MyViewModel : ViewModel() {
     lateinit var mutableLiveData : MutableLiveData<String>
     lateinit var items : MutableLiveData<List<Item>>
     lateinit var string : MutableLiveData<String>
+    lateinit var boxes : MutableLiveData<ArrayList<Box>>
 
     init
     {
@@ -38,6 +39,14 @@ class MyViewModel : ViewModel() {
         items = MutableLiveData(repo.items)
 
         string = MutableLiveData("")
+
+        boxes = MutableLiveData<ArrayList<Box>>()
+
+        var tempBoxes = ArrayList<Box>()
+        tempBoxes.add(Box(0, "yero"))
+        tempBoxes.add(Box(1, "one"))
+        tempBoxes.add(Box(2, "two"))
+        boxes.value = tempBoxes
     }
 
     val flowTimer : Flow<String> = flow {

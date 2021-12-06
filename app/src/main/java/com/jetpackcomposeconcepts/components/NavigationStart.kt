@@ -83,14 +83,17 @@ fun NavigationStart() {
             composable(route = "permissions") {
                 Permissions()
             }
-            composable(route = "list2") {
-                List2(viewModel)
-            }
             composable(route = "composables") {
                 Composables(viewModel)
             }
             composable(route = "singleton") {
                 SingletonInKotlin(viewModel = viewModel)
+            }
+            composable(route = "mylist2") {
+                MyList2(viewModel)
+            }
+            composable(route = "mylist3") {
+                MyList3(viewModel)
             }
         }
 
@@ -154,7 +157,10 @@ class MyButtons {
             route = "permissions", text = "Permissions"
         ),
         MyButton(
-            route = "list2", text = "List2"
+            route = "mylist2", text = "MyList2"
+        ),
+        MyButton(
+            route = "mylist3", text = "MyList3"
         ),
         MyButton(
             route = "composables", text = "Composables"
@@ -162,6 +168,7 @@ class MyButtons {
         MyButton(
             route = "singleton", text = "Singleton"
         )
+
     )
 }
 

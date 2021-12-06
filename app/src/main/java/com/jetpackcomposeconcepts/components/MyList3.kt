@@ -14,7 +14,7 @@ import com.jetpackcomposeconcepts.Item
 import com.jetpackcomposeconcepts.MyViewModel
 
 @Composable
-fun List2(viewModel: MyViewModel) {
+fun MyList3(viewModel: MyViewModel) {
     var items = viewModel.items.value
     LazyColumn(
     )
