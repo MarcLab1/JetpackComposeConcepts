@@ -89,6 +89,9 @@ fun NavigationStart() {
             composable(route = "composables") {
                 Composables(viewModel)
             }
+            composable(route = "singleton") {
+                SingletonInKotlin(viewModel = viewModel)
+            }
         }
 
     }
@@ -155,6 +158,9 @@ class MyButtons {
         ),
         MyButton(
             route = "composables", text = "Composables"
+        ),
+        MyButton(
+            route = "singleton", text = "Singleton"
         )
     )
 }
