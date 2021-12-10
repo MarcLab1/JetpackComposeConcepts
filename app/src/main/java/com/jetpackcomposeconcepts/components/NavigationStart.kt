@@ -95,8 +95,10 @@ fun NavigationStart() {
             composable(route = "mylist3") {
                 MyList3(viewModel)
             }
+            composable(route = "testpage") {
+                TestPage()
+            }
         }
-
     }
 }
 
@@ -167,6 +169,9 @@ class MyButtons {
         ),
         MyButton(
             route = "singleton", text = "Singleton"
+        ),
+        MyButton(
+            route = "testpage", text = "More Recomposition"
         )
 
     )
