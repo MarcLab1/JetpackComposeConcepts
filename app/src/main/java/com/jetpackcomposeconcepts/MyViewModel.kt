@@ -23,6 +23,11 @@ class MyViewModel : ViewModel() {
     lateinit var string : MutableLiveData<String>
     lateinit var boxes : MutableLiveData<ArrayList<Box>>
 
+    lateinit var excellentBox : MutableState<Box?>
+    lateinit var excellentFancyItem : MutableState<Item?>
+
+    lateinit var fancyItems : MutableState<List<Item>>
+
     init
     {
         students = MutableLiveData()
@@ -47,6 +52,15 @@ class MyViewModel : ViewModel() {
         tempBoxes.add(Box(1, "one"))
         tempBoxes.add(Box(2, "two"))
         boxes.value = tempBoxes
+
+        excellentBox = mutableStateOf(null)
+        excellentFancyItem = mutableStateOf(null)
+
+        var _fancyitems = ArrayList<Item>()
+        _fancyitems.add(Item(0, false))
+        _fancyitems.add(Item(1, false))
+        _fancyitems.add(Item(2, false))
+        fancyItems = mutableStateOf(_fancyitems)
     }
 
     val flowTimer : Flow<String> = flow {

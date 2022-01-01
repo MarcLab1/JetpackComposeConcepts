@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -20,7 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.jetpackcomposeconcepts.components.*
 
 @Composable
-fun NavigationStart() {
+fun NavigationStart(vmRecipe : RecipeViewModel) {
 
 
     MyComposeNativeTheme(darkTheme = false) {
@@ -98,6 +97,15 @@ fun NavigationStart() {
             composable(route = "testpage") {
                 TestPage()
             }
+            composable(route = "statehoisting") {
+                StateHoisting()
+            }
+            composable(route = "mylist4") {
+                MyList4(viewModel)
+            }
+            composable(route = "assortedcomments") {
+                NavigationWithViewModel(vmRecipe)
+            }
         }
     }
 }
@@ -172,6 +180,15 @@ class MyButtons {
         ),
         MyButton(
             route = "testpage", text = "More Recomposition"
+        ),
+        MyButton(
+            route = "statehoisting", text = "State Hoisting"
+        ),
+        MyButton(
+            route = "mylist4", text = "mylist4"
+        ),
+        MyButton(
+            route = "assortedcomments", text = "Navigation with viewModel()"
         )
 
     )

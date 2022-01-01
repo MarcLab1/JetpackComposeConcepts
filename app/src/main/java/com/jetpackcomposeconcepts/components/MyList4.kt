@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,22 +16,23 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jetpackcomposeconcepts.Box
+import com.jetpackcomposeconcepts.Item
 import com.jetpackcomposeconcepts.MyViewModel
 import com.jetpackcomposeconcepts.R
 
 
 @Composable
-fun MyList2(viewModel: MyViewModel) {
+fun MyList4(viewModel: MyViewModel) {
     var nav = rememberNavController()
     NavHost(nav, startDestination = "test") {
         composable(route = "test") {
-            Test(nav, viewModel = viewModel)
+            ItemList(nav, viewModel = viewModel)
         }
-        composable("page/{boxId}")
+        composable("fancyitem/{itemNumber}")
         { backStackEntry ->
-            Page(
-                backStackEntry.arguments?.getString("boxId")!!,
-                viewModel.boxes.value?.get(backStackEntry.arguments?.getString("boxId")!!.toInt()),
+            ItemDetail(
+                backStackEntry.arguments?.getString("itemNumber")!!,
+                viewModel.fancyItems.value?.get(backStackEntry.arguments?.getString("itemNumber")!!.toInt()),
                 viewModel
             )
         }
@@ -38,30 +40,29 @@ fun MyList2(viewModel: MyViewModel) {
 }
 
 @Composable
-fun Test(nav: NavController, viewModel: MyViewModel) {
+fun ItemList(nav: NavController, viewModel: MyViewModel) {
 
     LazyColumn(modifier = Modifier.padding(16.dp)) {
 
-        items(viewModel.boxes.value?.size!!)
-        {
-            putBox(viewModel.boxes.value!![it], viewModel, nav)
+        items(viewModel.fancyItems.value)
+        {   item->
+            ItemCard(item, viewModel, nav)
         }
     }
 }
 
 @Composable
-fun putBox(box: Box, viewModel: MyViewModel, nav: NavController) {
+fun ItemCard(item: Item, viewModel: MyViewModel, nav: NavController) {
     var ctx = LocalContext.current
-
+    val itemNumber = item.number
     Row(modifier = Modifier
         .fillMaxWidth()
         .clickable {
-            val boxId = box.boxId
-            viewModel.excellentBox.value = box
-            nav.navigate("page/" + boxId)
+            viewModel.excellentFancyItem.value = item
+            nav.navigate("fancyitem/" + itemNumber)
         }) {
 
-        Text(text = box.toString())
+        Text(text = itemNumber.toString())
 
         Image(
             painter = painterResource(id = R.drawable.student1 ),
@@ -69,18 +70,16 @@ fun putBox(box: Box, viewModel: MyViewModel, nav: NavController) {
             modifier = Modifier.size(40.dp)
         )
     }
-
 }
 
 
 @Composable
-fun Page(boxId: String, box: Box?, viewModel: MyViewModel) {
+fun ItemDetail(itemNumber: String, item: Item?, viewModel: MyViewModel) {
 
     Column() {
-        Text(text = boxId)
-        Text(text = box.toString())
-        Text(text = viewModel.boxes.value?.get(boxId.toInt()).toString())
-        viewModel.excellentBox.value?.let { Text(it.boxName) }
+        Text(text = item.toString())
+        Text(text = viewModel.fancyItems.value?.get(itemNumber.toInt()).toString())
+        Text(viewModel.excellentFancyItem.value.toString())
     }
 
 }

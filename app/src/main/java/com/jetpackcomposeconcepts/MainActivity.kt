@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 class MainActivity : ComponentActivity() {
 
@@ -13,6 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
+            var vmRecipe : RecipeViewModel = viewModel()
             Surface() {
                 Column(
                     modifier = Modifier
@@ -20,7 +22,7 @@ class MainActivity : ComponentActivity() {
                         .fillMaxWidth()
                 )
                 {
-                    NavigationStart()
+                    NavigationStart(vmRecipe)
                 }
             }
         }
